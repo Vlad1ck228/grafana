@@ -6,7 +6,7 @@ alerting:
   alertmanagers:
     - static_configs:
         - targets:
-           - alertmanager:9093
+          - 192.168.0.187:9093
 
 rule_files:
   - "alert_rules.yml"
@@ -14,25 +14,30 @@ rule_files:
 scrape_configs:
   - job_name: "prometheus"
     static_configs:
-      - targets: ["localhost:9090"]
+      - targets:
+        - "192.168.0.187:9090"
 
   - job_name: "node-exporter"
     static_configs:
-      - targets: ["node-exporter:9100"]
+      - targets:
+        - "192.168.0.187:9100"
 
   - job_name: "cadvisor"
     static_configs:
-      - targets: ["cadvisor:8080"]
+      - targets:
+        - "192.168.0.187:8080"
 
-  - job_name: windows
+  - job_name: "windows"
     static_configs:
       - targets:
-          - '192.168.0.183:9182'
-  - job_name: ubuntu
+        - "192.168.0.183:9182"
+
+  - job_name: "ubuntu"
     static_configs:
       - targets:
-          - '192.168.0.101:9100'
-  - job_name: mikrotik
+        - "192.168.0.101:9100"
+
+  - job_name: "mikrotik"
     static_configs:
       - targets:
         - 192.168.0.100
@@ -46,3 +51,4 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: 192.168.0.143:9116
+
