@@ -12,4 +12,4 @@ receivers:
 - name: 'telegram'
   telegram_configs:
   - bot_token: "6503640997:AAHgBIhBADWPVK0IcImAOuV7N9URf1HyUuk"
-    chat_id: -703134469
+    chat_id: -1001788626394
