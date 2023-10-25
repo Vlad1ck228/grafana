@@ -24,7 +24,7 @@ services:
     volumes:
       - prom-data:/prometheus
       - ./configs/prometheus/alert_rules.yml:/etc/prometheus/alert_rules.yml
-      - ./configs/prometheus/prometheus.yml
+      - ./configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
   alertmanager:
     image: prom/alertmanager:v0.25.0
@@ -33,7 +33,7 @@ services:
     command: 
       - "--config.file=/etc/alertmanager/alertmanager.yml"
       - "--storage.path=/alertmanager" 
-      - "--web.external-url=http://127.0.0.1:9093"
+      - "--web.external-url=http://127.0.0.1:9093"      
     volumes:
       - alert-data:/alertmanager
       - ./configs/alertmanager.yml:/etc/alertmanager/alertmanager.yml
@@ -55,12 +55,12 @@ services:
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:v0.47.0
     ports:
-      - 8080:8080
+    - 8080:8080
     volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:rw
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
 
 volumes:
   grafana-data:
